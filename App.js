@@ -23,6 +23,7 @@ function App() {
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
+          options={({ route }) => ({ title: route.params.name })} // this will overwrite "App cua tui"
           initialParams={{ itemId: 81, msg: "hehehe" }}
         />
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
