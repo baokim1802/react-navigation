@@ -8,22 +8,46 @@ import CreatePostScreen from "./src/screens/CreatePostScreen";
 
 const Stack = createNativeStackNavigator();
 
+function LogoTitle() {
+  return (
+    // <Image
+    //   style={{ width: 50, height: 50 }}
+    //   source={require("@expo/snack-static/react-native-logo.png")}
+    // />
+    <Text>Alo!</Text>
+  );
+}
+
 function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ title: "App cua tui" }}
+        screenOptions={{
+          title: "App cua tui",
+          headerStyle: { backgroundColor: "#f4511e" },
+          headerTintColor: "#fff",
+          headerTitleStyle: { fontWeight: "bold" },
+        }}
       >
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: "Overview" }}
+          options={{
+            // title: "Overview",
+            headerTitle: (props) => <LogoTitle {...props} />,
+            headerRight: () => (
+              <Button onPress={() => alert("This is a button!")} title="Info" />
+            ),
+          }}
         />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
-          options={({ route }) => ({ title: route.params.name })} // this will overwrite "App cua tui"
+          options={({ route }) => ({
+            title: route.params.name,
+            headerTintColor: "whitesmoke",
+          })} // this will overwrite "App cua tui"
           initialParams={{ itemId: 81, msg: "hehehe" }}
         />
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
