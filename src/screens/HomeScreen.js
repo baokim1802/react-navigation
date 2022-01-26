@@ -24,6 +24,10 @@ const HomeScreen = ({ navigation, route }) => {
         title="Create Post"
         onPress={() => navigation.navigate("CreatePost")}
       />
+      <Button
+        title="Go to Nesting"
+        onPress={() => navigation.navigate("Nesting")}
+      />
     </View>
   );
 };
